@@ -7,9 +7,6 @@
 gaps inner 6px
 default_border none
 #for_window [app_id="foot"] border csd
-## added in dotfiles
-## added in .config
-
 
 # Laptop screen off when lid is down
 
