@@ -1,11 +1,11 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# ///////////////////////////////
+# /// Sway configuration file ///
+# ///////////////////////////////
 
+# Appearance basics
 gaps inner 6px
-default_border none
+default_border pixel 3
+smart_borders on
 #for_window [app_id="foot"] border csd
 
 # Laptop screen off when lid is down
@@ -45,12 +45,14 @@ set $term foot
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 ## Custom Keybindigs
-
 bindsym $mod+ctrl+left workspace prev_on_output
 bindsym $mod+ctrl+right workspace next_on_output
 
 # Screenshot region with Grim + Slurp
 bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+
+# Swaylock
+bindsym $mod+shift+o exec swaylock -S --clock --indicator --effect-blur=7x4 --fade-in=0 --indicator-radius=150 --effect-vignette 0.5:0.5 --font="Lexend"
 
 ### Output configuration
 #
