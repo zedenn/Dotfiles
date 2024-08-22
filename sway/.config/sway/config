@@ -12,6 +12,11 @@ smart_borders on
 bindswitch lid:on output eDP-1 disable
 bindswitch lid:off output eDP-1 enable
 
+output DP-4 {
+   # ...config options...
+   mode 2560x1440@144.000hz
+}
+
 exec_always cat /proc/acpi/button/lid/LID/state | awk '{print $2}' | grep -q 'closed' && swaymsg output eDP-1 disable
 
 # Wallpaper
