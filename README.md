@@ -1,5 +1,5 @@
 # Dotfiles for Arch linux
-Managed with [GNU Stow](https://www.gnu.org/software/stow/).
+Managed with [GNU Stow](https://www.gnu.org/software/stow/)
 
 ## Installation
 
