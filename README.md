@@ -11,4 +11,4 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ## Fonts
 
 Waybar: Lexend <br/>
-Terminal: MonaspiceNe (otf-monaspace-nerd)
+Terminal: CaskaydiaCove Nerd Font
