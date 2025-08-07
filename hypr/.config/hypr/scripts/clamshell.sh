@@ -1,9 +1,9 @@
 #!/bin/bash
-# If lid is closed, this script writes hyprland valid syntax for disabling internal laptop screen. If lid is open, the file is cleared.
+# If lid is closed, this script writes hyprland valid syntax to monitorstate.conf for disabling internal laptop screen. If lid is open, the file is cleared.
 # INSTRUCTIONS:
 # 1) Source the $CONFIG_FILE in your hyprland.conf
-# 2) exec-once this script in your hyprland.conf (Disables laptop screen on startup, if lid is closed)
-# 3) Add bindl switches for this script to hyprland.conf (Disables or enables laptop screen, if lid switches state)
+# 2) exec-once this script in your hyprland.conf (disables laptop screen on startup, if lid is closed)
+# 3) Add bindl switches for this script in hyprland.conf (disables or enables laptop screen, if lid switches state)
     # bindl=,switch:on:Lid Switch,exec,~/.config/hypr/scripts/clamshell.sh
     # bindl=,switch:off:Lid Switch,exec,~/.config/hypr/scripts/clamshell.sh
 
