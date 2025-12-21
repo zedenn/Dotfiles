@@ -7,17 +7,22 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "ui_font_weight": 400.0,
+  "buffer_line_height": "comfortable",
+  "ui_font_family": "CaskaydiaCove Nerd Font",
+  "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
   "base_keymap": "VSCode",
   "telemetry": {
     "metrics": false,
     "diagnostics": false
   },
-  "ui_font_size": 16,
+  "ui_font_size": 16.0,
   "buffer_font_size": 16,
   "theme": {
-    "mode": "system",
-    "light": "Ayu Mirage",
-    "dark": "One Dark"
+    "mode": "dark",
+    "light": "Nord Light",
+    "dark": "Ayu Mirage"
   },
   "file_types": {
     "Shell Script": ["conf"]
