@@ -1,28 +1,29 @@
 #!/bin/bash
-IMAGE="$1"
-CONFIG="$HOME/.config/hypr/hyprpaper.conf"
 
-# Resolve full path
-IMAGE="$(realpath "$IMAGE")"
+# 1. Resolve path and validate
+IMAGE="${1:?Error: No image provided}"
+IMAGE=$(realpath "$IMAGE")
 
-# Validate supported formats
-EXT="${IMAGE##*.}"
-if ! [[ "$EXT" =~ ^(png|jpg|jpeg|webp|jxl)$ ]]; then
-    echo "Unsupported format: .$EXT"
-    echo "Supported formats: png, jpg, jpeg, webp, jxl"
+if [[ ! -f "$IMAGE" || ! "$IMAGE" =~ \.(png|jpg|jpeg|webp|jxl)$ ]]; then
+    notify-send "Wallpaper Error" "Unsupported format"
     exit 1
 fi
 
-# Unload existing wallpapers
-hyprctl hyprpaper unload all >/dev/null
+# 2. Update config for persistence
+cat > "$HOME/.config/hypr/hyprpaper.conf" <<EOF
+ipc = true
+splash = false
 
-# Apply wallpaper to all monitors
-hyprctl hyprpaper reload ",$IMAGE" >/dev/null
+wallpaper {
+    monitor =
+    path = $IMAGE
+}
+EOF
 
-# Save config for persistence
-echo "preload=$IMAGE" > "$CONFIG"
-echo "wallpaper=,$IMAGE" >> "$CONFIG"
-echo "ipc=true" >> "$CONFIG"
+# 3. Optimized IPC logic
+# Unload unused images to save RAM, then load the new one
+hyprctl hyprpaper unload all
+hyprctl hyprpaper preload "$IMAGE"
+hyprctl hyprpaper wallpaper ",$IMAGE,"
 
-# Confirmation message
-echo "Wallpaper set to: $(basename "$IMAGE")"
+notify-send -t 2000 "Hyprpaper" "Wallpaper: ${IMAGE##*/}"
