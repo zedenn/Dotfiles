@@ -38,7 +38,7 @@ bindl=,switch:off:Lid Switch,exec,~/.config/hypr/scripts/clamshell.sh
 ### AUTOSTART ###
 #################
 
-exec-once = ~/.scripts/monitor_gpu_usage.sh
+exec-once = "echo
 exec-once = waybar
 exec-once = hyprpaper
 exec-once = swaync
@@ -85,7 +85,8 @@ decoration {
         enabled = true
         size = 6
         passes = 3
-        new_optimizations = true
+	new_optimizations = true   
+	xray = true
  }
     shadow {
         enabled = false
