@@ -18,7 +18,7 @@ case "$COMMAND" in
         ;;
     vfr)
         # Note: vfr on = true (saves GPU), vfr off = false (high usage)
-        hyprctl keyword misc:vfr "$VALUE"
+        hyprctl keyword debug:vfr "$VALUE"
         ;;
     *)
         echo "Usage: blur|shadow|vfr {on|off}"
