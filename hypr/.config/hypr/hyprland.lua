@@ -35,23 +35,28 @@ hl.config({
 -- =========================================================================
 -- LID SWITCH BINDINGS
 -- =========================================================================
-hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("~/.config/hypr/scripts/clamshell.sh"), { locked = true })
-hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("~/.config/hypr/scripts/clamshell.sh"), { locked = true })
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("~/.config/hypr/scripts/clamshell_lua.sh"), { locked = true })
+hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("~/.config/hypr/scripts/clamshell_lua.sh"), { locked = true })
 
 -- =========================================================================
 -- AUTOSTART (Startup Programs)
 -- =========================================================================
 hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprland-session.target")
     hl.exec_cmd("~/.config/hypr/scripts/clamshell_lua.sh")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprpaper -c ~/.config/hypr/config/hyprpaper.conf")
     hl.exec_cmd("swaync")
-    hl.exec_cmd("hypridle -c ~/.config/hypr/config/hypridle.conf")
+    hl.exec_cmd("hypridle")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
 
-    -- Tag these specific instances with a custom startup variable prefix
+    -- Scratchpads
     hl.exec_cmd("env HYPR_STARTUP=magic " .. terminal .. " --app-id 'magic-terminal'")
     hl.exec_cmd("env HYPR_STARTUP=music " .. terminal .. " --app-id 'special-cmus' -e cmus")
+end)
+
+hl.on("hyprland.shutdown", function()
+    os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
 end)
 
 -- =========================================================================

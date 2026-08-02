@@ -1,10 +1,6 @@
 {
-     "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
-     "runtime.version": "LuaJIT",
-     "workspace": { 
-       "library": ["/usr/share/hypr/stubs"] 
-     },
-     "diagnostics": { 
-       "globals": ["hl"] 
-     }
-   }
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.library": ["/usr/share/hypr/stubs"],
+  "Lua.diagnostics.globals": ["hl"]
+}

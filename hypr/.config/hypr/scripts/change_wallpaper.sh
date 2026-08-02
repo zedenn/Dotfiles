@@ -1,29 +1,29 @@
 #!/bin/bash
+# Usage: ./set_wallpaper.sh path/to/image.jpg
 
-# 1. Resolve path and validate
-IMAGE="${1:?Error: No image provided}"
+# 1. Set variables
+IMAGE="${1:?Error: Provide an image path}"
 IMAGE=$(realpath "$IMAGE")
 
+# 2. Check existence and format 
 if [[ ! -f "$IMAGE" || ! "$IMAGE" =~ \.(png|jpg|jpeg|webp|jxl)$ ]]; then
-    notify-send "Wallpaper Error" "Unsupported format"
+    echo "Error: File does not exist or format is unsupported."
     exit 1
 fi
 
-# 2. Update config for persistence
-cat > "$HOME/.config/hypr/hyprpaper.conf" <<EOF
+# 3. Apply wallpaper
+hyprctl hyprpaper wallpaper ,$IMAGE
+
+# 4. Overwrite config to make change permanent
+# 'splash = false' is added to prevent the New Year text
+cat > "$HOME/.config/hypr/config/hyprpaper.conf" <<EOF
 ipc = true
 splash = false
 
 wallpaper {
-    monitor =
+    monitor = 
     path = $IMAGE
 }
 EOF
 
-# 3. Optimized IPC logic
-# Unload unused images to save RAM, then load the new one
-hyprctl hyprpaper unload all
-hyprctl hyprpaper preload "$IMAGE"
-hyprctl hyprpaper wallpaper ",$IMAGE,"
-
-notify-send -t 2000 "Hyprpaper" "Wallpaper: ${IMAGE##*/}"
+echo "Applied: ${IMAGE##*/}"

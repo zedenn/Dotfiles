@@ -1,19 +1,21 @@
 -- =========================================================================
 -- CUSTOM & APPLICATION KEYBINDS
 -- =========================================================================
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock --config ~/.config/hypr/config/hyprlock.conf"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp)" -t png - | wl-copy -t image/png'))
-hl.bind("CONTROL + 7", hl.dsp.exec_cmd("wtype -M ctrl -k slash"))
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exit())
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + V", function()
-    hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
-    hl.dispatch(hl.dsp.window.center())
-end)
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock --config ~/.config/hypr/config/hyprlock.conf"))      -- lock
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp)" -t png - | wl-copy -t image/png')) -- screenshot
+hl.bind("CONTROL + 7", hl.dsp.exec_cmd("wtype -M ctrl -k slash"))                                         -- zeditor commenting
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))                                                -- open terminal
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())                                                         -- kill window
+hl.bind(mainMod .. " + M", hl.dsp.exit())                                                                 -- exit hyprland
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))                                                  -- open filemanager
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))                                                         -- open menu
+hl.bind(mainMod .. " + V",
+    function()                                                                                            -- toggle float and center window
+        hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+        hl.dispatch(hl.dsp.window.center())
+    end)
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + G", hl.dsp.window.fullscreen({ action = "toggle" })) -- toggle fullscreen
 
 -- =========================================================================
 -- DIRECTIONAL FOCUS

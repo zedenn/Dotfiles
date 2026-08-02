@@ -1,0 +1,18 @@
+{
+  "lsp": {
+    "lua-language-server": {
+      "settings": {
+        "Lua": {
+          "diagnostics": {
+            "globals": ["hl"]
+          },
+          "workspace": {
+            "library": [
+              "/usr/share/hyprland/lua"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
